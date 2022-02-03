@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import AppNavbar from './components/AppNavbar/AppNavbar'
 import { Col, Container, Row } from 'react-bootstrap'
 import HomePage from './pages/HomePage'
+import ProduitPage from './pages/ProduitPage'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,6 +18,7 @@ ReactDOM.render(
           <Col>
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/produits" element={<ProduitPage />} />
             </Routes>
           </Col>
         </Row>
