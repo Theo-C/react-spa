@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import App from './App'
 import reportWebVitals from './reportWebVitals'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import AppNavbar from './components/AppNavbar/AppNavbar'
 import { Col, Container, Row } from 'react-bootstrap'
+import HomePage from './pages/HomePage'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,7 +16,7 @@ ReactDOM.render(
         <Row>
           <Col>
             <Routes>
-              <Route path="/" element={<App />} />
+              <Route path="/" element={<HomePage />} />
             </Routes>
           </Col>
         </Row>
