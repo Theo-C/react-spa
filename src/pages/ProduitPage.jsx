@@ -28,11 +28,24 @@ export default function ProduitPage() {
     setProduits(datas.data)
   }
 
+  async function deleteProduit(produit) {
+    let rep = window.confirm(
+      `Etes-vous sûr de vouloir supprimer le produit : ${produit.nom} ? `
+    )
+    if (rep === true) {
+      const res = await axios.delete(
+        `http://localhost:3100/produits/${produit._id}`
+      )
+      console.log(res)
+      getProduits()
+    }
+  }
+
   function add(ean) {
     const useEan = ean !== undefined ? ean : inputEan
     axios
       .get(`https://world.openfoodfacts.org/api/v0/product/${useEan}.json`)
-      .then((datas) => {
+      .then(async (datas) => {
         if (datas.data.status === 1) {
           alert(`Produit trouvé : ${datas.data.product.product_name_fr}`)
           let produit = {
@@ -43,9 +56,9 @@ export default function ProduitPage() {
             imgSmall: datas.data.product.image_thumb_url,
             nutriscore: datas.data.product.nutriscore_grade,
           }
-          axios.post('http://localhost:3100/produits', produit)
+          await axios.post('http://localhost:3100/produits', produit)
 
-          setProduits([...produits, produit])
+          getProduits()
           setInputEan('')
         } else alert(`Produit non trouvé : ${useEan}`)
       })
@@ -59,7 +72,13 @@ export default function ProduitPage() {
           <Card.Body>
             <Card.Title>{produit.nom}</Card.Title>
             <Card.Text>{produit.marque}</Card.Text>
-            <Button variant="primary">Go somewhere</Button>
+            <Button variant="primary">Go somewhere</Button>{' '}
+            <Button
+              variant="outline-danger"
+              onClick={() => deleteProduit(produit)}
+            >
+              Supprimer
+            </Button>
           </Card.Body>
         </Card>
       </Col>
