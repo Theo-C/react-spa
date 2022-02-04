@@ -41,7 +41,7 @@ export default function ProduitPage() {
 
   let displayProduits = produits.map((produit, indice) => {
     return (
-      <Col md="4">
+      <Col md="4" key={'produit-' + indice}>
         <Card>
           <Card.Img variant="top" className="img-card" src={produit.img} />
           <Card.Body>
