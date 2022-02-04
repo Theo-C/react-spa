@@ -8,7 +8,6 @@ import {
 } from 'react-bootstrap'
 import { useState } from 'react'
 import axios from 'axios'
-import BarcodeScannerComponent from 'react-qr-barcode-scanner'
 import ModalScan from '../components/AppNavbar/ModalScan'
 
 export default function ProduitPage() {
