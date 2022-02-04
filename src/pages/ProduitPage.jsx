@@ -18,9 +18,10 @@ export default function ProduitPage() {
   const closeModal = () => setDisplayModal(false)
   const showModal = () => setDisplayModal(true)
 
-  function add() {
+  function add(ean) {
+    const useEan = ean !== undefined ? ean : inputEan
     axios
-      .get(`https://world.openfoodfacts.org/api/v0/product/${inputEan}.json`)
+      .get(`https://world.openfoodfacts.org/api/v0/product/${useEan}.json`)
       .then((datas) => {
         if (datas.data.status === 1) {
           alert(`Produit trouvé : ${datas.data.product.product_name_fr}`)
@@ -34,7 +35,7 @@ export default function ProduitPage() {
           }
           setProduits([...produits, produit])
           setInputEan('')
-        } else alert('Produit non trouvé')
+        } else alert(`Produit non trouvé : ${useEan}`)
       })
   }
 

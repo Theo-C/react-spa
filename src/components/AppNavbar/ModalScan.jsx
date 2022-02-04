@@ -45,7 +45,7 @@ export default function ModalScan(props) {
                   onUpdate={(err, result) => {
                     if (result) {
                       setInputEan(result.text)
-                      addProduit()
+                      addProduit(result.text)
                       closeModal()
                     }
                   }}
