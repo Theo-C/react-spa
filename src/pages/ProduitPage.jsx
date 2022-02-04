@@ -9,6 +9,7 @@ import {
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import ModalScan from '../components/AppNavbar/ModalScan'
+import { Link } from 'react-router-dom'
 
 export default function ProduitPage() {
   const [inputEan, setInputEan] = useState('')
@@ -72,7 +73,9 @@ export default function ProduitPage() {
           <Card.Body>
             <Card.Title>{produit.nom}</Card.Title>
             <Card.Text>{produit.marque}</Card.Text>
-            <Button variant="primary">Go somewhere</Button>{' '}
+            <Button variant="warning" as={Link} to={`/produits/${produit._id}`}>
+              Modifier
+            </Button>{' '}
             <Button
               variant="outline-danger"
               onClick={() => deleteProduit(produit)}

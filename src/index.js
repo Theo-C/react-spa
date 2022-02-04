@@ -8,6 +8,7 @@ import AppNavbar from './components/AppNavbar/AppNavbar'
 import { Col, Container, Row } from 'react-bootstrap'
 import HomePage from './pages/HomePage'
 import ProduitPage from './pages/ProduitPage'
+import ProduitUpdatePage from './pages/ProduitUpdatePage'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,6 +20,7 @@ ReactDOM.render(
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/produits" element={<ProduitPage />} />
+              <Route path="/produits/:id" element={<ProduitUpdatePage />} />
             </Routes>
           </Col>
         </Row>
