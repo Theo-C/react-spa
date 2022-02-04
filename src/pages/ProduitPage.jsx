@@ -6,7 +6,7 @@ import {
   Col,
   Card,
 } from 'react-bootstrap'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import ModalScan from '../components/AppNavbar/ModalScan'
 
@@ -18,6 +18,16 @@ export default function ProduitPage() {
   const closeModal = () => setDisplayModal(false)
   const showModal = () => setDisplayModal(true)
 
+  useEffect(() => {
+    getProduits()
+  }, [])
+
+  async function getProduits() {
+    const datas = await axios.get('http://localhost:3100/produits')
+    console.log(datas)
+    setProduits(datas.data)
+  }
+
   function add(ean) {
     const useEan = ean !== undefined ? ean : inputEan
     axios
@@ -26,13 +36,15 @@ export default function ProduitPage() {
         if (datas.data.status === 1) {
           alert(`Produit trouvé : ${datas.data.product.product_name_fr}`)
           let produit = {
-            id: datas.data.product._id,
+            ean: useEan,
             marque: datas.data.product.brands,
             nom: datas.data.product.product_name_fr,
             img: datas.data.product.image_url,
             imgSmall: datas.data.product.image_thumb_url,
             nutriscore: datas.data.product.nutriscore_grade,
           }
+          axios.post('http://localhost:3100/produits', produit)
+
           setProduits([...produits, produit])
           setInputEan('')
         } else alert(`Produit non trouvé : ${useEan}`)
