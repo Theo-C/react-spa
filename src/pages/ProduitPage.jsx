@@ -81,9 +81,9 @@ export default function ProduitPage() {
 
       <ModalScan
         displayModal={displayModal}
-        setDisplayModal={setDisplayModal}
         closeModal={closeModal}
-        showModal={showModal}
+        setInputEan={setInputEan}
+        addProduit={add}
       />
     </>
   )

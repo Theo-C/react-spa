@@ -12,7 +12,8 @@ export default function ModalScan(props) {
   const { displayModal } = props
 
   const { closeModal } = props
-  const [data, setData] = useState('Not Found')
+  const { setInputEan } = props
+  const { addProduit } = props
   const [mode, setMode] = useState('environment')
   return (
     <>
@@ -42,11 +43,13 @@ export default function ModalScan(props) {
                   height={500}
                   facingMode={mode}
                   onUpdate={(err, result) => {
-                    if (result) setData(result.text)
-                    else setData('Not Found')
+                    if (result) {
+                      setInputEan(result.text)
+                      addProduit()
+                      closeModal()
+                    }
                   }}
                 />
-                <p>{data}</p>
               </Col>
             </Row>
           </Container>
