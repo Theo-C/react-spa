@@ -8,10 +8,16 @@ import {
 } from 'react-bootstrap'
 import { useState } from 'react'
 import axios from 'axios'
+import BarcodeScannerComponent from 'react-qr-barcode-scanner'
+import ModalScan from '../components/AppNavbar/ModalScan'
 
 export default function ProduitPage() {
   const [inputEan, setInputEan] = useState('')
   const [produits, setProduits] = useState([])
+
+  const [displayModal, setDisplayModal] = useState(false)
+  const closeModal = () => setDisplayModal(false)
+  const showModal = () => setDisplayModal(true)
 
   function add() {
     axios
@@ -55,6 +61,9 @@ export default function ProduitPage() {
       <Row>
         <Col md="6">
           <InputGroup className="mb-3">
+            <Button variant="info" onClick={showModal}>
+              Scanner
+            </Button>
             <FormControl
               placeholder="Saisir un EAN"
               value={inputEan}
@@ -69,6 +78,13 @@ export default function ProduitPage() {
       </Row>
 
       <Row>{displayProduits}</Row>
+
+      <ModalScan
+        displayModal={displayModal}
+        setDisplayModal={setDisplayModal}
+        closeModal={closeModal}
+        showModal={showModal}
+      />
     </>
   )
 }
