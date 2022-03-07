@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'Starjedi';
+  src: local('Starjedi'), url('./font/starjedi/Starjedi.ttf') format('truetype');
+  font-weight: regular;
+}
+.h1 {
+  color: red;
+  font-family: 'Starjedi';
+}
+.me-auto {
+  font-family: 'Starjedi';
+  text-align: center;
+}
+
+.title {
+  font-family: 'Starjedi';
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+h3 {
+  margin-top: 6px;
+  font-size: 1.2rem;
+}

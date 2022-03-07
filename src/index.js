@@ -7,8 +7,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import AppNavbar from './components/AppNavbar/AppNavbar'
 import { Col, Container, Row } from 'react-bootstrap'
 import HomePage from './pages/HomePage'
-import ProduitPage from './pages/ProduitPage'
-import ProduitUpdatePage from './pages/ProduitUpdatePage'
+import FilmsPage from './pages/FilmsPage'
+import FilmsUpdatePage from './pages/FilmsUpdatePage'
+import FilmsCreatePage from './pages/FilmsCreatePage'
+import Generator from './pages/Generator'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,8 +21,10 @@ ReactDOM.render(
           <Col>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/produits" element={<ProduitPage />} />
-              <Route path="/produits/:id" element={<ProduitUpdatePage />} />
+              <Route path="/Films" element={<FilmsPage />} />
+              <Route path="/Films/:id" element={<FilmsUpdatePage />} />
+              <Route path="/Films/create" element={<FilmsCreatePage />} />
+              <Route path="/generateur" element={<Generator />} />
             </Routes>
           </Col>
         </Row>

@@ -1,0 +1,40 @@
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Starjedi';
+  text-align: center;
+}
+
+.me.auto {
+  color: white;
+  font-family: 'Starjedi';
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'Starjedi';
+  src: local('Starjedi'),
+    url('../components/AppNavbar/font/starjedi/Starjedi.ttf') format('truetype');
+  font-weight: regular;
+}
+
+#title {
+  color: yellow;
+}
+
+#subtitle {
+  color: #0697fc;
+}
+
+#description {
+  color: white;
+}
+
+.valider {
+  background-color: #0697fc;
+}
+
+h3 {
+  color: yellow;
+}
