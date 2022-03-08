@@ -1,5 +1,3 @@
-# Exemple Utilisation App SPA
-
 ## Installation
 
 `git clone https://github.com/plarrat/EIT-4eme-SPA`
